@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SVG Demo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="img/favicon.png">
+
+        <!-- JQuery -->        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+        <!-- CodeMirror -->
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/codemirror.css">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/codemirror.min.js"></script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/codemirror/4.2.0/mode/xml/xml.js"></script>
+
+        <!-- SVG.js -->
+        <script src="js/svg.min.js"></script>
+        <script src="js/svg.absorb.js"></script>
+        <script src="js/svg.export.js"></script>
+
+        <!-- JQuery UI -->
+        <link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
+        <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+
+        <!-- JQuery Minicolors -->
+        <link href="css/jquery.minicolors.css" rel="stylesheet">
+        <script src="js/jquery.minicolors.min.js"></script>
+
+        <!-- JQuery mousewheel -->
+        <script src="js/jquery.mousewheel.min.js"></script>
+
+        <!-- JQuery throttle-debounce -->
+        <script src="js/jquery.throttle.min.js"></script>
+
+        <!-- JQuery Base64 -->
+        <script src="js/jquery.base64.min.js"></script>
+        
+        <!-- My stuff -->
+        <link href="css/style.css" rel="stylesheet">
+        <script charset="UTF-8" src="js/svg-sample.js"></script>
+        <script charset="UTF-8" src="js/behaviours.js"></script>
+        <script charset="UTF-8" src="js/app.js"></script>
+    </head>
+    <body>
+        <div class="all-but-footer">
+            <div class="menu">
+                <div class="shrinkable">
+                    <img class="logo" src="img/logo.png">
+                    <ul class="menu-list">
+                        <li class="menu-item draw-item active">
+                            <a href="#" class="mode-link" data-mode="draw">Нарисовать</a>
+                        </li><!--
+                      --><li class="menu-item write-item">
+                            <a href="#" class="mode-link" data-mode="write">Написать</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wrapper shrinkable draw">
+                <div class="column">
+                    <div class="toolbar">
+                        <div class="btn-group btn-group-sm" data-toggle="buttons">
+                            <label class="btn btn-default tool-btn" data-tool="pencil">
+                                <img src="img/pencil.png">
+                                <input type="radio" name="tool">
+                            </label>
+                            <label class="btn btn-default tool-btn default-choice" data-tool="line">
+                                <img src="img/line.png">
+                                <input type="radio" name="tool">
+                            </label>
+                            <label class="btn btn-default tool-btn" data-tool="curve">
+                                <img src="img/curve.png">
+                                <input type="radio" name="tool">
+                            </label>
+                            <label class="btn btn-default tool-btn" data-tool="rect">
+                                <img src="img/rect.png">
+                                <input type="radio" name="tool">
+                            </label>
+                            <label class="btn btn-default tool-btn" data-tool="ellipse">
+                                <img src="img/ellipse.png">
+                                <input type="radio" name="tool">
+                            </label>   
+                        </div>                 
+                        <div class="btn-group btn-group-sm floatright">
+                            <button type="button" class="btn btn-default undo-btn">
+                                <img src="img/undo.png">
+                            </button>
+                            <button type="button" class="btn btn-default clear-btn">
+                                <img src="img/clear.png">
+                            </button>                  
+                        </div>
+                    </div>
+                    <div class="one-to-one">
+                        <div id="canvas" class="content nice-border"></div>
+                    </div>
+                    <div class="toolbar">
+                        <div class="addon tb-elem">
+                            <img src="img/brush.png">
+                        </div><div class="input-group input-group-sm tb-elem">
+                            <input type="hidden" id="stroke-color" class="form-control" data-opacity="0.9">
+                        </div><div class="addon tb-elem">
+                            <img src="img/fill.png">
+                        </div><div class="input-group input-group-sm tb-elem">
+                            <input type="hidden" id="fill-color" class="form-control" data-opacity="0.75">
+                        </div><div class="slider-container">
+                            <img src="img/diameter.png" class="diam-image">
+                            <div class="slider diam-slider"></div>
+                        </div>
+                    </div>
+                </div><div class="column">
+                    <div class="one-to-one notoolbar">
+                        <div id="code" class="content nice-border"></div>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="wrapper shrinkable write">
+                <div class="column">
+                    <div class="toolbar clearfix">                                      
+                        <div class="btn-group btn-group-sm floatright">
+                            <button type="button" class="btn btn-danger render-btn">
+                                <img src="img/play.png">
+                            </button>                  
+                        </div>
+                    </div>
+                    <div class="one-to-one notoolbarbelow">
+                        <div id="editor" class="content nice-border"></div>
+                    </div>                    
+                </div><!--
+             --><div class="column">
+                    <div class="toolbar clearfix">
+                        <div class="btn-group btn-group-sm floatright">
+                            <button type="button" class="btn btn-default zoom-in-btn">
+                                <img src="img/zoom-in.png">
+                            </button>
+                            <button type="button" class="btn btn-default zoom-out-btn">
+                                <img src="img/zoom-out.png">
+                            </button>                  
+                            <button type="button" class="btn btn-default fit-btn">
+                                <img src="img/fit.png">
+                            </button> 
+                        </div>
+                    </div>
+                    <div class="one-to-one">
+                        <div class="content nice-border clip-window">
+                            <div class="draggable">
+                                <img class="display">
+                            </div>
+                            <div class="alert alert-danger invalid-alert">
+                                <div class="invalid-message">
+                                    <p>&lt;\&gt;</p>
+                                    <p><strong>Введённый SVG-файл невалиден</strong></p>
+                                    <p>Проверьте правильность синтаксиса.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+
+        </div>        
+        <div class="footer">
+            <p>Алексей Федосов, АВТ-019</p>
+            <p>Иконки от <a href="http://glyphicons.com">Glyphicons</a></p>
+        </div>
+        <script type="text/javascript">
+            $(function() {
+                new App();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,312 @@
+/* Basic layout */
+.shrinkable {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.column {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 6%;
+    min-width: 330px;
+}
+
+.column:last-child {
+    margin-right: 6%;
+}
+
+@media (orientation: portrait) {
+    .column {
+        width: 88%;
+    }
+
+    .all-but-footer,
+    .footer,
+    .shrinkable {
+        min-width: 370px;
+    }
+}
+
+@media (orientation: landscape) {
+    .column {
+        width: 41%;
+    }
+
+    .all-but-footer,
+    .footer,
+    .shrinkable {
+        min-width: 810px;
+    }
+}
+
+
+
+/* Menu styles */
+.menu {
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: #f8f8f8;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin: 5px 5px 5px 6%;
+    text-align: center;
+}
+
+ul.menu-list {
+    float: right;
+    height: 50px;
+    margin-right: 6%;
+    margin-bottom: 0;
+}
+
+li.menu-item {
+    display: inline-block;    
+    height: 100%;
+}
+
+.menu-item a {
+    color: #777;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 0 15px;
+    line-height: 50px;
+}
+
+.menu-item.active {
+    border-bottom: 3px solid #ccc;
+}
+
+.menu-item:hover {
+    background-color: #e7e7e7;
+}
+
+
+
+/*  Tricky footer */
+html, body {
+    height: 100%;
+}
+
+.footer {
+    text-align: center;
+    width: 100%; 
+    color: #777;  
+    height: 40px; 
+    line-height: 1;
+}
+
+.all-but-footer {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -70px;
+    width: auto;
+}
+
+.all-but-footer:after {
+    content: "";
+    display: block;
+    height: 70px;
+}
+
+
+
+/* Tricky elements preserving 1:1 aspect ratio */
+.one-to-one {
+    position: relative;
+    width: 100%;
+}
+
+.one-to-one:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.one-to-one .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+
+
+/* Messy toolbar styles */
+.notoolbar {
+    margin-top: 46px;
+}
+
+.notoolbarbelow {
+    margin-bottom: 56px;
+}
+
+.nice-border {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.toolbar {
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+}
+
+.toolbar:first-child {
+    margin-top: 0;
+}
+
+.floatright {
+    float: right;
+    height: 100%;
+}
+
+.addon {
+    border: 1px solid #ccc;
+    border-right: 0;
+    background-color: #eee;
+    height: 36px;
+    width: 40px;
+    border-radius: 3px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 5px 10px 5px 8px;
+    margin-left: 10px;
+}
+
+.addon:first-child {
+    margin-left: 0;
+}
+
+.tb-elem {
+    display: inline-block;
+    height: 36px;
+}
+
+.clearfix {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.diam-image {
+    padding: 6px 0;
+}
+
+
+.slider-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 186px;
+}
+
+.slider {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    left: 33px;
+}
+
+.ui-slider-handle:focus {
+    outline: none !important;
+}
+
+.minicolors-panel {
+    border-radius: 4px;
+    box-shadow: none;
+}
+
+/* Write mode SVG display styles */
+.clip-window {
+    overflow: hidden;
+}
+
+.display {
+    width: 100%;
+    height: 100%;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+         -o-user-select: none;
+            user-select: none;
+}
+
+.draggable {
+    padding: 2000px;
+    margin: -2000px;
+    cursor: move;
+}
+
+
+/* Error message styles */
+.alert {
+    text-align: center;
+    height: 100%;
+    border: none;
+}
+
+.invalid-message {
+    position: relative;
+    top: 50%;
+    margin-top: -120px;
+}
+
+.invalid-message p:first-child {
+
+    font-size: 100px;
+}
+
+.invalid-alert {
+    display: none;
+}
+
+
+/* CodeMirror tweaking */
+.CodeMirror {
+    border-radius: 4px;
+    height: 100% !important;
+}
+
+.CodeMirror-scroll {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.CodeMirror-lines {
+    padding-right: 18px;
+}
+
+
+/* Brute-force deactivation of hscrollbar for IE */
+.CodeMirror-hscrollbar {
+    display: none !important;
+}
+
+.CodeMirror-scrollbar-filler {
+    display: none !important;
+}
+
+.CodeMirror-vscrollbar {
+    bottom: 0 !important;
+}
+
+/* Write mode is deactivated on page load */
+.write {
+    display: none;
+}
