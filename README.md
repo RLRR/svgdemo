@@ -5,4 +5,4 @@ A mostly useless web app demonstrating how SVG format works. Can be used in two 
 
 In write mode you can edit SVG code directly and see the resulting image change accordingly.
 
-See it in action at (http://svg.fedosov.me/).
+See it in action at http://svg.fedosov.me/.
