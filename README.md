@@ -8,5 +8,3 @@ Can be used in two modes: in draw mode it is a simple graphics editor which upda
 In write mode SVG code can be edited directly, and the resulting image will change accordingly.
 
 Draw mode doesn't work on most touch devices, as only mouse events are supported at the moment.
-
-See it in action at http://svg.fedosov.me/.
